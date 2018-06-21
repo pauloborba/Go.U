@@ -1,0 +1,19 @@
+body {
+  margin: 0px;
+  width: 2000px;
+  height: 2000px;
+  background-color: #FFFFFF;
+}
+nav a {
+  padding: 4px 10px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #3399ff;
+  color: #ffffff;
+  border-radius: 5px;
+  margin: 10px;
+}
+nav a:hover {
+  color: #e6e6e6;
+  background-color: #1a8cff;
+}
