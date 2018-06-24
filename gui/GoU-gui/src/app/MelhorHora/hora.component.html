@@ -1,5 +1,9 @@
 <html>
 
+<h1>
+  Melhor hora
+</h1>
+
 <table>
 <tr>
    <td><label>Usuário </label></td>
@@ -24,7 +28,26 @@
   <td><input [(ngModel)]="hora.mf"></td>
 </tr>
 <tr>
-  <td><button>Melhor Hora</button></td>
+  <td><button (click)="gravar(hora)">Melhor Hora</button></td>
+</tr>
+</table>
+
+<table>
+<tr *ngIf="horas.length > 0">
+   <th>Usuario</th>
+   <th>Local</th>
+   <th>Hora</th>
+   <th>Minuto</th>
+   <th>Hora</th>
+   <th>Minuto</th>
+</tr>
+<tr *ngFor="let a of horas" name="horalist">
+   <td name="userlist">{{a.user}}</td>
+   <td name="locallist">{{a.local}}</td>
+   <td>{{a.hi}}</td>
+   <td>{{a.mi}}</td>
+   <td>{{a.hf}}</td>
+   <td>{{a.mf}}</td>
 </tr>
 </table>
 
