@@ -1,5 +1,7 @@
 import { Hora } from './hora';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class HoraService {
   horas: Hora[] = [];
   gravar(hora: Hora): Hora {
@@ -14,7 +16,7 @@ export class HoraService {
 
   isAmPm(hour: number): boolean {
     var result = false;
-    if ((!isNaN(hour)) && (hour>=0 && hour<=24)) {
+    if ((!isNaN(hour)) && (hour>=0 && hour<=60)) {
       result = true;
     }
     return result;

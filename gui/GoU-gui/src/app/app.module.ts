@@ -10,6 +10,7 @@ import {AgenComponent} from './Agendamento/agen.component';
 import {HoraComponent} from './MelhorHora/hora.component';
 import {LocalComponent} from './Local/local.component';
 import {FavComponent} from './Favorito/fav.component';
+import {HoraService} from './MelhorHora/hora.service';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {FavComponent} from './Favorito/fav.component';
     ])
   ],
   
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [HoraService]
 })
 export class AppModule { }
