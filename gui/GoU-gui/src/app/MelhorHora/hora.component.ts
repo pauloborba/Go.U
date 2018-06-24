@@ -9,8 +9,8 @@ import { HoraService } from './hora.service';
 })
 export class HoraComponent  {
   title = 'hora';
+  constructor(private horaService: HoraService) {}
   hora: Hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
-  horaService = new HoraService();
   horas: Hora[] = [];
 
   gravar(a: Hora): void {
