@@ -5,12 +5,27 @@ export class HoraService {
   gravar(hora: Hora): Hora {
      var result = null;
 
-     if ((!isNaN(hora.hf)) && (!isNaN(hora.hi)) && (!isNaN(hora.mi)) && (!isNaN(hora.mf))) {
-      if (hora.hf>=0 && hora.hi>=0 && hora.mf>=0 && hora.mi>=0) {
+     if (this.dataInvalida(hora)) {
                  this.horas.push(hora);
                  result = hora;       
-      }
      }
      return result;
   }
+
+  isAmPm(hour: number): boolean {
+    var result = false;
+    if ((!isNaN(hour)) && (hour>=0 && hour<=24)) {
+      result = true;
+    }
+    return result;
+  }
+
+  dataInvalida(hour: Hora): boolean {
+    var result = false;
+    if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isAmPm(hour.mi) && this.isAmPm(hour.mf)) {
+      result = true;
+    }
+    return result;
+  }
+
 }
