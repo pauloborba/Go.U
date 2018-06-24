@@ -20,8 +20,10 @@ export class HoraComponent  {
      }
      else {
         this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
+        alert("Por favor, digite um horário válido!");
      }
      
 }
 
 }
+
