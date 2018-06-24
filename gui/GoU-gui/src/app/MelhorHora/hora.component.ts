@@ -14,9 +14,14 @@ export class HoraComponent  {
   horas: Hora[] = [];
 
   gravar(a: Hora): void {
-     this.horaService.gravar(a);
-     this.horas.push(a);
-     this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
-}
+     if (this.horaService.gravar(a)) {
+        this.horas.push(a);
+        this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
+     }
+     else {
+        this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
+     }
+     
 }
 
+}
