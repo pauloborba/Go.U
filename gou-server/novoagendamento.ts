@@ -1,4 +1,4 @@
-import {Agendamento} from '../gui/GoU-gui/src/app/Agendamento/agendamento';
+import {Agendamento} from '../../gui/GoU-gui/src/app/Agendamento/agendamento';
 
 export class NovoAgendamento {
   agendamentos: Agendamento[] = [];
