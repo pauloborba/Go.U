@@ -8,11 +8,19 @@ var app = express();
 
 var horas: MelhorHora = new MelhorHora();
 
+var allowCrossDomain = function(req: any, res: any, next: any) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+}
+app.use(allowCrossDomain);
+
 app.use(bodyParser.json());
 
-app.get('/hora', function (req, res) {
-  var hora: string = JSON.stringify(horas.getHoras());
-  res.send(hora);
+app.get('/horas', function (req, res) {
+  console.log('GET /horas: ' + req)
+  res.send(JSON.stringify(horas.getHoras()));
 })
 
 app.post('/hora', function (req: express.Request, res: express.Response) {
