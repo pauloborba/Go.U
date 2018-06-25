@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 export class HoraService {
   horas: Hora[] = [];
   gravar(hora: Hora): Hora {
+    hora = hora.clone();
      var result = null;
 
      if (this.dataInvalida(hora)) {

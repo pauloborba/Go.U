@@ -10,16 +10,15 @@ import { HoraService } from './hora.service';
 export class HoraComponent  {
   title = 'hora';
   constructor(private horaService: HoraService) {}
-  hora: Hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
+  hora: Hora = new Hora();
   horas: Hora[] = [];
 
   gravar(a: Hora): void {
      if (this.horaService.gravar(a)) {
         this.horas.push(a);
-        this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
+        this.hora = new Hora();
      }
      else {
-        this.hora = {user: "", local: "", hi: 10, mi: 0, hf: 11, mf: 0};
         alert("Por favor, digite um horário válido!");
      }
      
