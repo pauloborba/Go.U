@@ -18,7 +18,7 @@ describe("Melhor Hora Teste", () => {
     hora.mi = "30";
     hora.hf = "12";
     hora.mf = "30";
-    melhorhora.criar(hora);
+    melhorhora.gravar(hora);
 
     expect(melhorhora.getHoras().length).toBe(1);
     hora = melhorhora.getHoras()[0];
@@ -29,5 +29,18 @@ describe("Melhor Hora Teste", () => {
     expect(hora.hf).toBe("12");
     expect(hora.mf).toBe("30");
   })
+
+   it("não aceita hora invalida", () => {
+    var hora: Hora = new Hora();
+    hora.user = "Guilherme";
+    hora.local = "RU";
+    hora.hi = "10";
+    hora.mi = "30";
+    hora.hf = "12";
+    hora.mf = "30";
+    melhorhora.gravar(hora);
+
+    expect(melhorhora.getHoras().length).toBe(0);
+})
 
 })
