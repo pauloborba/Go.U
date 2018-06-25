@@ -15,6 +15,14 @@ export class MelhorHora {
 
   isAmPm(hour: number): boolean {
     var result = false;
+    if ((!isNaN(hour)) && (hour>=0 && hour<=24)) {
+      result = true;
+    }
+    return result;
+  }
+
+  isMin(hour: number): boolean {
+    var result = false;
     if ((!isNaN(hour)) && (hour>=0 && hour<=60)) {
       result = true;
     }
@@ -23,7 +31,7 @@ export class MelhorHora {
 
   dataInvalida(hour: Hora): boolean {
     var result = false;
-    if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isAmPm(hour.mi) && this.isAmPm(hour.mf)) {
+    if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isMin(hour.mi) && this.isMin(hour.mf)) {
       result = true;
     }
     return result;
