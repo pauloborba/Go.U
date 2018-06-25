@@ -1,0 +1,25 @@
+<html>
+<table>
+<tr>
+  <td><label>Usuario</label></td>
+   <td><input [(ngModel)]="agendamento.usuario" name="userbox"></td>
+  <td><button (click)="criarAgendamento(agendamento)">Agendar</button></td>
+</tr> 
+<tr>
+  <td><label>Local</label></td>
+   <td><input [(ngModel)]="agendamento.local" name="locationbox"></td>
+</tr>
+<tr>
+  <td><label>Pessoas</label></td>
+   <td><input [(ngModel)]="agendamento.pessoas" name="quantitybox"></td>
+</tr> 
+<tr>
+  <td><label>Data</label></td>
+   <td><input [(ngModel)]="agendamento.data" name="datebox"></td>
+</tr> 
+<tr>
+  <td><label>Hora</label></td>
+   <td><input [(ngModel)]="agendamento.hora" name="timebox"></td>
+</tr> 
+</table> 
+</html>
