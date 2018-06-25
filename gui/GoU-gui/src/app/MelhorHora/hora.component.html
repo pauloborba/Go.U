@@ -15,17 +15,17 @@
 </tr>
 <tr>
    <td><label>Hora inicial </label></td>
-   <td><input [(ngModel)]="hora.hi"></td>
+   <td><input [(ngModel)]="hora.hi" name="hibox"></td>
    <td><label>Minuto inicial </label></td>
-   <td><input [(ngModel)]="hora.mi"></td>
+   <td><input [(ngModel)]="hora.mi" name="mibox"></td>
 
 
 </tr>
 <tr>
   <td><label>Hora final </label></td>
-  <td><input [(ngModel)]="hora.hf"></td>
+  <td><input [(ngModel)]="hora.hf" name="hfbox"></td>
   <td><label>Minuto Final </label></td>
-  <td><input [(ngModel)]="hora.mf"></td>
+  <td><input [(ngModel)]="hora.mf" name="mfbox"></td>
 </tr>
 <tr>
   <td><button (click)="gravar(hora)">Melhor Hora</button></td>
