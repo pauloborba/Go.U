@@ -27,14 +27,18 @@ app.post('/hora', function (req: express.Request, res: express.Response) {
   var hora: Hora = <Hora> req.body;
   hora = horas.gravar(hora);
   if (hora) {
-    res.send({"success": "O aluno foi cadastrado com sucesso"});
+    res.send({"success": "A hora foi gravada com sucesso"});
   } else {
-    res.send({"failure": "O aluno não pode ser cadastrado"});
+    res.send({"failure": "A hora nao pode ser gravada"});
   }
 })
 
-app.listen(3000, function () {
+var server = app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
 
-export { app }
+function closeServer(): void {
+  server.close;
+}
+
+export { app, server, closeServer }
