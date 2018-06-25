@@ -1,18 +1,26 @@
 import { Hora } from './hora';
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HoraService {
-  horas: Hora[] = [];
-  gravar(hora: Hora): Hora {
-    hora = hora.clone();
-     var result = null;
 
-     if (this.dataInvalida(hora)) {
-                 this.horas.push(hora);
-                 result = hora;       
-     }
-     return result;
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private gouURL = 'http://localhost:3000';
+
+  constructor(private http: Http) { }
+
+  //horas: Hora[] = [];
+
+  gravar(hora: Hora): Promise<Hora> {
+    return this.http.post(this.gouURL + "/hora",JSON.stringify(hora), {headers:this.headers})
+           .toPromise()
+           .then(res => {
+            if (res.json().success) {return hora;} else {return null;}
+
+           })
+           .catch(this.tratarErro);
   }
 
   isAmPm(hour: number): boolean {
@@ -30,5 +38,16 @@ export class HoraService {
     }
     return result;
   }
+
+    getHora(): Promise<Hora[]> {
+    return this.http.get(this.gouURL + "/horas")
+             .toPromise()
+             .then(res => res.json() as Hora[])
+             .catch(this.tratarErro);
+}
+    private tratarErro(erro: any): Promise<any>{
+    console.error('Erro ao registrar Hora!',erro);
+    return Promise.reject(erro.message || erro);
+}
 
 }
