@@ -11,7 +11,7 @@
 </tr>
 <tr>
    <td><label>Local </label></td>
-   <td><input [(ngModel)]="hora.local" name="cpfbox"></td>
+   <td><input [(ngModel)]="hora.local" name="localbox"></td>
 </tr>
 <tr>
    <td><label>Hora inicial </label></td>
@@ -44,10 +44,10 @@
 <tr *ngFor="let a of horas" name="horalist">
    <td name="userlist">{{a.user}}</td>
    <td name="locallist">{{a.local}}</td>
-   <td>{{a.hi}}</td>
-   <td>{{a.mi}}</td>
-   <td>{{a.hf}}</td>
-   <td>{{a.mf}}</td>
+   <td name="horainicial">{{a.hi}}</td>
+   <td name="minutoinicial">{{a.mi}}</td>
+   <td name="horafinal">{{a.hf}}</td>
+   <td name="minutofinal">{{a.mf}}</td>
 </tr>
 </table>
 
