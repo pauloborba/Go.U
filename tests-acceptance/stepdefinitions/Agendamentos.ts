@@ -37,8 +37,13 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     Then(/^Eu recebo uma mensagem de "Reserva feita com sucesso"$/, async () => {
-        const mensagem = element(by.binding('messagebox'));
+        const mensagem = element(by.binding('alert'));
         await expect(mensagem.getText()).toEqual("Reserva feita com sucesso");
+    });
+
+    Then(/^Eu recebo uma mensagem de "Horário não disponível, se possível, tente um dos horários disponíveis"$/, async () => {
+        const mensagem = element(by.binding('alert'));
+        await expect(mensagem.getText()).toEqual("Horário não disponível, se possível, tente um dos horários disponíveis");
     });
 
     Then(/^O agendamento realizado para o negócio "(\d*)" para "(\d*) pessoas" no horário de "([^\"]*)" no dia "([^\"]*)" pode ser visto na lista de Meus Agendamentos.$/, async (local, qtd, hora, dia) => {
