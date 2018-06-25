@@ -4,7 +4,7 @@ import bodyParser = require("body-parser");
 import {Hora} from '../gui/GoU-gui/src/app/MelhorHora/hora';
 import {MelhorHora} from './melhorhora';
 
-import { Agendamento } from '../../gui/GoU-gui/src/app/Agendamento/agendamento';
+import { Agendamento } from '../gui/GoU-gui/src/app/Agendamento/agendamento';
 import { NovoAgendamento } from './novoagendamento';
 
 var app = express();
