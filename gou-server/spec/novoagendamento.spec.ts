@@ -26,7 +26,32 @@ describe("Novo Agendamento Teste", () => {
     expect(agendamento.pessoas).toBe("2");
     expect(agendamento.data).toBe("02/09");
     expect(agendamento.hora).toBe("13:00");
-    expect(hora.mf).toBe("30");
+
+  })
+
+  it("Não cria dois agendamentos para um mesmo horário", () => {
+    var agendamento: Agendamento = new Agendamento();
+    agendamento.usuario = "Lucas";
+    agendamento.local = "RU";
+    agendamento.pessoas = "2";
+    agendamento.data = "02/09";
+    agendamento.hora = "13:00"
+    novoagendamento.criar(agendamento);
+
+    agendamento.usuario = "João";
+    agendamento.local = "RU";
+    agendamento.pessoas = "4";
+    agendamento.data = "02/09";
+    agendamento.hora = "13:00"
+    novoagendamento.criar(agendamento);
+
+    expect(melhorhora.getAgendamentos().length).toBe(1);
+    agendamento = novoagendamento.getAgendamentos()[0];
+    expect(agendamento.usuario).toBe("Lucas");
+    expect(agendamento.local).toBe("RU");
+    expect(agendamento.pessoas).toBe("2");
+    expect(agendamento.data).toBe("02/09");
+    expect(agendamento.hora).toBe("13:00");
 
   })
 
