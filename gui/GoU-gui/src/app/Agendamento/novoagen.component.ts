@@ -14,7 +14,7 @@ export class NovoAgenComponent implements OnInit {
 
    agendamento: Agendamento = new Agendamento();
    agendamentos: Agendamento[];
-   
+   vagaocupada: boolean = false;
 
    criarAgendamento(a: Agendamento): void {
      this.agenService.criar(a)
@@ -23,7 +23,7 @@ export class NovoAgenComponent implements OnInit {
               this.agendamentos.push(ab);
               this.agendamento = new Agendamento();
            } else {
-
+                  this.vagaocupada = true;
            }
         })
         .catch(erro => alert(erro));

@@ -5,11 +5,14 @@ export class NovoAgendamento {
 
   criar(agendamento: Agendamento): Agendamento {
     var result = null;
-    
-      result = new Agendamento();
-      result.copyFrom(agendamento);
-      this.agendamentos.push(result);
-    
+    if(!this.agendamentos.find(a => a.data == agendamento.data)){
+      if(!this.agendamentos.find(a => a.hora == agendamento.hora)){
+        result = new Agendamento();
+        result.copyFrom(agendamento);
+        this.agendamentos.push(result);  
+      }
+    }
+      
     return result;
   }
 
