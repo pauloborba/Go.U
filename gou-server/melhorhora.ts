@@ -20,8 +20,8 @@ export class MelhorHora {
         (i.local === hora.local) && 
         (i.hi == hora.hi) && 
         (i.mi == hora.mi) &&
-        (i.mi == hora.hf) &&
-        (i.mi == hora.mf)
+        (i.hf == hora.hf) &&
+        (i.mf == hora.mf)
         );
       if (removeindex > -1) {
           result = this.horas.splice(removeindex, 1);
