@@ -37,6 +37,8 @@ export class MelhorHora {
     return result;
   }
 
+  
+
   getHoras(): Hora[] {
     return this.horas;
   }
