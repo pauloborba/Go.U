@@ -37,8 +37,22 @@ describe("Melhor Hora Teste", () => {
     hora.hi = 10;
     hora.mi = 30;
     hora.hf = 12;
+    hora.mf = 70;
+    melhorhora.gravar(hora);
+
+    expect(melhorhora.getHoras().length).toBe(0);
+})
+
+   it("cancela hora marcada", () => {
+    var hora: Hora = new Hora();
+    hora.user = "Guilherme";
+    hora.local = "RU";
+    hora.hi = 10;
+    hora.mi = 30;
+    hora.hf = 12;
     hora.mf = 30;
     melhorhora.gravar(hora);
+    melhorhora.remove(hora);
 
     expect(melhorhora.getHoras().length).toBe(0);
 })
