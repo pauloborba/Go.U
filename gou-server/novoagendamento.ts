@@ -5,18 +5,20 @@ export class NovoAgendamento {
 
   criar(agendamento: Agendamento): Agendamento {
     var result = null;
-    if(!this.agendamentos.find(a => a.data == agendamento.data)){
-      if(!this.agendamentos.find(a => a.hora == agendamento.hora)){
+    if(this.vagaOcupada(agendamento)){
+      
         result = new Agendamento();
         result.copyFrom(agendamento);
         this.agendamentos.push(result);  
-      }
+      
     }
       
     return result;
   }
 
- 
+  vagaOcupada(agen : Agendamento): boolean {
+    return ((!this.agendamentos.find(a => a.data == agen.data))&&(!this.agendamentos.find(a => a.hora == agen.hora)));
+  }
 
   atualizar(agendamento: Agendamento): Agendamento {
     var result: Agendamento = this.agendamentos.find(a => a.usuario == agendamento.usuario);
