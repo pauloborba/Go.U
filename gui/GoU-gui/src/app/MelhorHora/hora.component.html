@@ -1,0 +1,55 @@
+<html>
+
+<h1>
+  Melhor hora
+</h1>
+
+<table>
+<tr>
+   <td><label>Usuário </label></td>
+   <td><input [(ngModel)]="hora.user" name="namebox"></td>
+</tr>
+<tr>
+   <td><label>Local </label></td>
+   <td><input [(ngModel)]="hora.local" name="localbox"></td>
+</tr>
+<tr>
+   <td><label>Hora inicial </label></td>
+   <td><input [(ngModel)]="hora.hi" name="hibox"></td>
+   <td><label>Minuto inicial </label></td>
+   <td><input [(ngModel)]="hora.mi" name="mibox"></td>
+
+
+</tr>
+<tr>
+  <td><label>Hora final </label></td>
+  <td><input [(ngModel)]="hora.hf" name="hfbox"></td>
+  <td><label>Minuto Final </label></td>
+  <td><input [(ngModel)]="hora.mf" name="mfbox"></td>
+</tr>
+<tr>
+  <td><button (click)="gravar(hora)">Melhor Hora</button></td>
+</tr>
+</table>
+
+<table>
+<tr *ngIf="horas.length > 0">
+   <th>Usuario</th>
+   <th>Local</th>
+   <th>Hora</th>
+   <th>Minuto</th>
+   <th>Hora</th>
+   <th>Minuto</th>
+</tr>
+<tr *ngFor="let a of horas" name="horalist">
+   <td name="userlist">{{a.user}}</td>
+   <td name="locallist">{{a.local}}</td>
+   <td name="horainicial">{{a.hi}}</td>
+   <td name="minutoinicial">{{a.mi}}</td>
+   <td name="horafinal">{{a.hf}}</td>
+   <td name="minutofinal">{{a.mf}}</td>
+   <td><button (click)="remove(a)">X</button></td>
+</tr>
+</table>
+
+</html>

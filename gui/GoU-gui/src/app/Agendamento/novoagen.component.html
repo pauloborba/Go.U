@@ -1,0 +1,46 @@
+<html>
+  <table>
+  <tr>
+    <td><label>Usuario</label></td>
+     <td><input [(ngModel)]="agendamento.usuario" name="userbox"></td>
+    <td><button (click)="criarAgendamento(agendamento)">Agendar</button></td>
+  </tr> 
+  <tr>
+    <td><label>Local</label></td>
+     <td><input [(ngModel)]="agendamento.local" name="locationbox"></td>
+  </tr>
+  <tr>
+    <td><label>Pessoas</label></td>
+     <td><input [(ngModel)]="agendamento.pessoas" name="quantitybox"></td>
+  </tr> 
+  <tr>
+    <td><label>Data</label></td>
+     <td><input [(ngModel)]="agendamento.data" name="datebox"></td>
+  </tr> 
+  <tr>
+    <td><label>Hora</label></td>
+     <td><input [(ngModel)]="agendamento.hora" name="timebox"></td>
+     <td *ngIf="vagaocupada">
+       Horário não disponível, se possível, tente um dos horários disponíveis
+  </td>
+  </tr> 
+  </table> 
+  
+  <table>
+  <tr>
+     <th>Usuario</th>
+     <th>Local</th>
+     <th>Pessoas</th>
+     <th>Data</th>
+     <th>Hora</th>
+  </tr>
+  <tr *ngFor="let a of agendamentos" name="agenlist">
+     <td name="usuariolist">{{a.usuario}}</td>
+     <td name="locallist">{{a.local}}</td>
+     <td name="pessoaslist">{{a.pessoas}}</td>
+     <td name="datalist">{{a.data}}</td>
+     <td name="horalist">{{a.hora}}</td>
+  </tr>
+  </table>
+  
+  </html>
