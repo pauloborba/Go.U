@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NovoAgenComponent } from './Agendamento/novoagen.component';
 import {AgenComponent} from './Agendamento/agen.component';
+import { AgenService } from './Agendamento/agen.service';
 import {HoraComponent} from './MelhorHora/hora.component';
 import {LocalComponent} from './Local/local.component';
 import {FavComponent} from './Favorito/fav.component';
@@ -51,6 +52,7 @@ import {HoraService} from './MelhorHora/hora.service';
   ],
   
   bootstrap: [AppComponent],
-  providers: [HoraService]
+  providers: [HoraService,AgenService]
+  
 })
 export class AppModule { }
