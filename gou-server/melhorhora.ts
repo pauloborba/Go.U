@@ -13,6 +13,15 @@ export class MelhorHora {
      return result;
   }
 
+  remove(hora) {
+      var result = null;
+      var removeindex = this.horas.findIndex(i => (i.user === hora.user) && (i.local === hora.local) && (i.hi == hora.hi) && (i.mi == hora.mi));
+      if (removeindex > -1) {
+          result = this.horas.splice(removeindex, 1);
+        }
+      return result;
+  }
+
   isAmPm(hour: number): boolean {
     var result = false;
     if ((!isNaN(hour)) && (hour>=0 && hour<=24)) {

@@ -33,6 +33,17 @@ app.post('/hora', function (req: express.Request, res: express.Response) {
   }
 })
 
+app.put('/hora', function (req: express.Request, res: express.Response) {
+  var hora: Hora = <Hora> req.body;
+  hora = horas.remove(hora);
+  if(hora) {
+    res.send({"success": "A hora foi removida com sucesso"});    
+  }else {
+    res.send({"failure": "A hora nao pode ser removida"});
+  }
+
+})
+
 var server = app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
