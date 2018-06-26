@@ -23,20 +23,14 @@ export class HoraService {
            .catch(this.tratarErro);
   }
 
-  isAmPm(hour: number): boolean {
-    var result = false;
-    if ((!isNaN(hour)) && (hour>=0 && hour<=60)) {
-      result = true;
-    }
-    return result;
-  }
+  remove(hora: Hora): Promise<Hora> {
+    return this.http.put(this.gouURL + "/hora",JSON.stringify(hora), {headers:this.headers})
+    .toPromise()
+    .then(res => {
+      if (res.json().success) {return hora;} else {return null;}
 
-  dataInvalida(hour: Hora): boolean {
-    var result = false;
-    if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isAmPm(hour.mi) && this.isAmPm(hour.mf)) {
-      result = true;
-    }
-    return result;
+    })
+    .catch(this.tratarErro);
   }
 
     getHora(): Promise<Hora[]> {

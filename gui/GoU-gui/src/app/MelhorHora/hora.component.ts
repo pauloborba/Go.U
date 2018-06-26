@@ -28,6 +28,19 @@ export class HoraComponent  {
         }
       })
   }
+    remove(a: Hora): void {
+    this.horaService.remove(a)
+      .then(ab => {
+        if(ab) {
+          var removeindex = this.horas.indexOf(a);
+          if (removeindex > -1) {
+            this.horas.splice(removeindex, 1);
+          }
+        }else {
+          alert("nao foi possivel remover");
+        }
+      })
+  }
 ngOnInit(): void {
   this.horaService.getHora()
   .then(as => this.horas = as)
