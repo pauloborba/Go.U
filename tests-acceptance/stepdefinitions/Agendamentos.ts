@@ -36,6 +36,10 @@ defineSupportCode(function ({ Given, When, Then }) {
         await element(by.buttonText('Agendar')).click();
     });
 
+    When(/^Eu cancelo a reserva para o horário de "([^\"]*)" no dia "([^\"]*)"$/, async (hora, dia) => {
+        await element(by.buttonText('X')).click();
+    });
+
     Then(/^Eu recebo uma mensagem de "Reserva feita com sucesso"$/, async () => {
         const mensagem = element(by.binding('alert'));
         await expect(mensagem.getText()).toEqual("Reserva feita com sucesso");
@@ -44,6 +48,16 @@ defineSupportCode(function ({ Given, When, Then }) {
     Then(/^Eu recebo uma mensagem de "Horário não disponível, se possível, tente um dos horários disponíveis"$/, async () => {
         const mensagem = element(by.binding('alert'));
         await expect(mensagem.getText()).toEqual("Horário não disponível, se possível, tente um dos horários disponíveis");
+    });
+
+    Then(/^Eu recebo uma mensagem de "Reserva Cancelada com sucesso"$/, async () => {
+        const mensagem = element(by.binding('alert'));
+        await expect(mensagem.getText()).toEqual("Reserva Cancelada com sucesso");
+    });
+
+    Then(/^A lista de Meus Agendamentos está vazia$/, async () => {
+        var sameagens : ElementArrayFinder = element.all(by.name('agenlist'));
+        await sameagens.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
     });
 
     Then(/^O agendamento realizado para o negócio "(\d*)" para "(\d*) pessoas" no horário de "([^\"]*)" no dia "([^\"]*)" pode ser visto na lista de Meus Agendamentos.$/, async (local, qtd, hora, dia) => {
