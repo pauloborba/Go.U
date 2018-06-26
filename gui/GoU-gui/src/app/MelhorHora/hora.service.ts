@@ -33,22 +33,6 @@ export class HoraService {
     .catch(this.tratarErro);
   }
 
-  isAmPm(hour: number): boolean {
-    var result = false;
-    if ((!isNaN(hour)) && (hour>=0 && hour<=60)) {
-      result = true;
-    }
-    return result;
-  }
-
-  dataInvalida(hour: Hora): boolean {
-    var result = false;
-    if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isAmPm(hour.mi) && this.isAmPm(hour.mf)) {
-      result = true;
-    }
-    return result;
-  }
-
     getHora(): Promise<Hora[]> {
     return this.http.get(this.gouURL + "/horas")
              .toPromise()

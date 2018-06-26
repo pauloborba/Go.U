@@ -3,7 +3,7 @@ import {Hora} from '../gui/GoU-gui/src/app/MelhorHora/hora';
 export class MelhorHora {
   horas: Hora[] = [];
 
-    gravar(hora: Hora): Hora {
+  gravar(hora: Hora): Hora {
      var result = null;
 
      if (this.dataInvalida(hora)) {
@@ -15,7 +15,14 @@ export class MelhorHora {
 
   remove(hora) {
       var result = null;
-      var removeindex = this.horas.findIndex(i => (i.user === hora.user) && (i.local === hora.local) && (i.hi == hora.hi) && (i.mi == hora.mi));
+      var removeindex = this.horas.findIndex(i => 
+        (i.user === hora.user) && 
+        (i.local === hora.local) && 
+        (i.hi == hora.hi) && 
+        (i.mi == hora.mi) &&
+        (i.mi == hora.hf) &&
+        (i.mi == hora.mf)
+        );
       if (removeindex > -1) {
           result = this.horas.splice(removeindex, 1);
         }
@@ -41,7 +48,10 @@ export class MelhorHora {
   dataInvalida(hour: Hora): boolean {
     var result = false;
     if (this.isAmPm(hour.hf) && this.isAmPm(hour.hi) && this.isMin(hour.mi) && this.isMin(hour.mf)) {
-      result = true;
+
+      if((hour.hf>hour.hi) || (hour.hf>=hour.hi) && (hour.mf>hour.mi)) {
+        result = true;
+      }     
     }
     return result;
   }
