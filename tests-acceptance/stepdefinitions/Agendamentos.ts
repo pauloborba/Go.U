@@ -5,6 +5,11 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
+let sameData = ((elem, data) => elem.element(by.name('datalist')).getText().then(text => text === data));
+let sameHora = ((elem, hora) => elem.element(by.name('horalist')).getText().then(text => text === hora));
+let sameLocal = ((elem, local) => elem.element(by.name('locallist')).getText().then(text => text === local));
+let sameQtd = ((elem, qtd) => elem.element(by.name('pessoaslist')).getText().then(text => text === qtd));
+
 var user = "Usuario";
 
 defineSupportCode(function ({ Given, When, Then }) {
@@ -18,12 +23,10 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     Given(/^O horário de "([^\"]*)" no dia "([^\"]*)" está livre.$/, async (hora,dia) => {
-        var allhora : ElementArrayFinder = element.all(by.name('agenlist'));
+        var allagens : ElementArrayFinder = element.all(by.name('agenlist'));
         await allagens;
         var sameagens = allagens.filter(elem =>
-                                      elem.getText().then(text => text === hora));
-        var sameagens = allagens.filter(elem =>
-                                        elem.getText().then(text => text === dia));
+                                                sameData(elem,dia)&&sameHora(elem,hora));
         await sameagens;
         await sameagens.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
     });
@@ -64,13 +67,7 @@ defineSupportCode(function ({ Given, When, Then }) {
         var allagens : ElementArrayFinder = element.all(by.name('agenlist'));
         await allagens;
         var sameagens = allagens.filter(elem =>
-                                      elem.getText().then(text => text === local));
-        var sameagens = allagens.filter(elem =>
-                                        elem.getText().then(text => text === qtd));
-        var sameagens = allagens.filter(elem =>
-                                        elem.getText().then(text => text === hora));
-        var sameagens = allagens.filter(elem =>
-                                        elem.getText().then(text => text === dia));
+                                                sameData(elem,dia)&&sameHora(elem,hora)&&sameLocal(elem,local)&&sameQtd(elem,qtd));
         await sameagens;
         await sameagens.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
