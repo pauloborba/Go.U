@@ -23,7 +23,6 @@ app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
 //Servidor de melhor hora
-
 app.get('/horas', function (req, res) {
   console.log('GET /horas: ' + req)
   res.send(JSON.stringify(horas.getHoras()));
@@ -39,8 +38,18 @@ app.post('/hora', function (req: express.Request, res: express.Response) {
   }
 })
 
-//Servidor de agendamento
+app.put('/hora', function (req: express.Request, res: express.Response) {
+  var hora: Hora = <Hora> req.body;
+  hora = horas.remove(hora);
+  if(hora) {
+    res.send({"success": "A hora foi removida com sucesso"});    
+  }else {
+    res.send({"failure": "A hora nao pode ser removida"});
+  }
 
+})
+
+//Servidor de agendamento
 app.get('/novoagen', function (req, res) {
   res.send(JSON.stringify(agendamento.getAgendamentos()));
 })
@@ -63,15 +72,6 @@ app.put('/agendamento', function (req: express.Request, res: express.Response) {
   } else {
     res.send({ "failure": "O agendamento não pode ser atualizado" });
   }
-app.put('/hora', function (req: express.Request, res: express.Response) {
-  var hora: Hora = <Hora> req.body;
-  hora = horas.remove(hora);
-  if(hora) {
-    res.send({"success": "A hora foi removida com sucesso"});    
-  }else {
-    res.send({"failure": "A hora nao pode ser removida"});
-  }
-
 })
 
 var server = app.listen(3000, function () {
